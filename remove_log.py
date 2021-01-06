@@ -134,15 +134,15 @@ if __name__ == '__main__':
         except ValueError as e:
             raise Exception('配置文件格式不对')
             
-        limit_size = cfg.get('limit-size', 10)
-        log_dir = cfg.get('log-dir', '/data/log/syslog/logs/bdwaf/access').encode('utf-8')
-        exclusive = cfg.get('exclusive', [])
-        delete_top_file = cfg.get('delete-top-file', False)
-        kwargs = {
-            'limit_size': limit_size,
-            'log_dir': log_dir,
-            'exclusive': exclusive,
-            'delete_top_file': delete_top_file
-        }
-        log_deleter = LogDeleter(**kwargs)
-        log_deleter.delete()
+    limit_size = cfg.get('limit-size', 10)
+    log_dir = cfg.get('log-dir', '/data/log/syslog/logs/bdwaf/access').encode('utf-8')
+    exclusive = cfg.get('exclusive', [])
+    delete_top_file = cfg.get('delete-top-file', False)
+    kwargs = {
+        'limit_size': limit_size,
+        'log_dir': log_dir,
+        'exclusive': exclusive,
+        'delete_top_file': delete_top_file
+    }
+    log_deleter = LogDeleter(**kwargs)
+    log_deleter.delete()
