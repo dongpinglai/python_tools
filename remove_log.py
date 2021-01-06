@@ -89,6 +89,8 @@ class LogDeleter(object):
         return size
         
     def delete(self):
+        file_count = 0
+        dir_count = 0
         logger.info(u'开始删除....')
         if self._delete_top_file:
             all_files = self.all_files
@@ -98,6 +100,7 @@ class LogDeleter(object):
                 if getsize(_file) < self._limit_size:
                     os.remove(_file)
                     logger.info(u'删除文件: %s' % _file)
+                    file_count += 1
 
         all_dirs = self.all_dirs
         for _dir in all_dirs:
@@ -107,7 +110,9 @@ class LogDeleter(object):
             if dir_size < self._limit_size:
                 shutil.rmtree(_dir)
                 logger.info(u'删除目录: %s' % _dir)
-        logger.info(u'删除完成....')
+                dir_count += 1
+        logger.info(u'删除完成...., 删除%d个目录, 删除%d文件' % (dir_count, file_count))
+    
 
     
 if __name__ == '__main__':
