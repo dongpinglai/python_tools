@@ -2,6 +2,7 @@
     "limit-size": 10, 
     "log-dir": "/root/python_tools/test_log_dir",
     "exclusive": ["remove_log.py", "remove_log.json"],
-    "delete-top-file" : false
-
+    "delete-top-file" : false,
+    "multi": true,
+    "n_worker": 5
 } 
