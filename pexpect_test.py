@@ -8,7 +8,7 @@ import time
 
 log_file = 'pexpect_log.txt'
 f = open(log_file, 'w')
-ssh_login = "ssh -p 22 togie:12345@172.16.110.220"
+ssh_login = "ssh -p 22 togie@172.16.110.220"
 child = pexpect.spawn(ssh_login)
 # child.logfile_read = f
 child.expect(["(?i)assword:\s*", "(?i)are you sure you want to continue connecting"],
