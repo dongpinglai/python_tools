@@ -168,7 +168,7 @@ class Transfor(object):
                 for line in f.readlines():
                     if re.search(oid, line):
                         file_path_parts = file_path.split(topdir)
-                        script_path = os.path.join('script', file_path_parts[-1])
+                        script_path = os.path.join('scripts', file_path_parts[-1])
                         found_it = 1
                         found_index = script_files.index(file_path)
                         self._found_script_path.append(script_files.pop(found_index))
