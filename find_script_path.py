@@ -88,7 +88,7 @@ def _run(oid, all_files, topdir=topdir):
 		script_path = find_script_path(oid, all_files, topdir)
 	except Exception as e:
 		logger.error('find %s script_path error:%s' % (oid, e))
-	if script_path.startswith('script/'):
+	if script_path.startswith('scripts/'):
 		try:
 			cursor.execute('UPDATE %s SET filename = "%s" WHERE oid ="%s" ' % ('bd_host_vul_lib_2021', script_path, oid))
 			cnx.commit()
