@@ -45,7 +45,7 @@ def find_script_path(oid, script_files, topdir='/opt/gvm/var/lib/openvas/plugins
         for file_path in script_files:
             with open(file_path, 'rt') as f:
                 for line in f.readlines():
-                    if re.search(oid, line):                        
+                    if re.search('script_oid\("' + oid + '"\)', line):                        
                         file_path_parts = file_path.split(topdir)
                         script_path = os.path.join('scripts', file_path_parts[-1])
                         found_it = 1                                             
