@@ -45,9 +45,9 @@ def find_script_path(oid, script_files, topdir='/opt/gvm/var/lib/openvas/plugins
         for file_path in script_files:
             with open(file_path, 'rt') as f:
                 for line in f.readlines():
-                    if re.search(oid, line):                        
+                    if re.search('script_oid\("' + oid + '"\)', line):                        
                         file_path_parts = file_path.split(topdir)
-                        script_path = os.path.join('script', file_path_parts[-1])
+                        script_path = os.path.join('scripts', file_path_parts[-1])
                         found_it = 1                                             
                         found_index = script_files.index(file_path)
                         break                                      
@@ -88,7 +88,7 @@ def _run(oid, all_files, topdir=topdir):
 		script_path = find_script_path(oid, all_files, topdir)
 	except Exception as e:
 		logger.error('find %s script_path error:%s' % (oid, e))
-	if script_path.startswith('script/'):
+	if script_path.startswith('scripts/'):
 		try:
 			cursor.execute('UPDATE %s SET filename = "%s" WHERE oid ="%s" ' % ('bd_host_vul_lib_2021', script_path, oid))
 			cnx.commit()
